@@ -23,7 +23,8 @@ public class InventoryMenuService {
             System.out.println("\nInventory Management System");
             System.out.println("1. Add Item");
             System.out.println("2. Display Inventory");
-            System.out.println("3. Exit");
+            System.out.println("3. Display Product");
+            System.out.println("4. Exit");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -36,6 +37,11 @@ public class InventoryMenuService {
                     inventoryService.getInventory().forEach(System.out::println);
                     break;
                 case 3:
+                    System.out.println("Enter product name: ");
+                    String productName = scanner.nextLine();
+                    inventoryService.getInventory();
+                    break;
+                case 4:
                     System.out.println("Exiting program...");
                     System.exit(0);
                 default:
@@ -52,14 +58,12 @@ public class InventoryMenuService {
         BigDecimal price = scanner.nextBigDecimal();
 
         System.out.println("Enter product quantity:");
-        Long quantity = scanner.nextLong();
+        long quantity = scanner.nextLong();
 
         System.out.println("Enter product category:");
         Category category = Category.valueOf(scanner.next());
 
-        System.out.println("Enter product status:");
-        Status status = Status.valueOf(scanner.next());
 
-        inventoryService.addItemToInventory(name, price, quantity, category, status);
+        inventoryService.addItemToInventory(name, price, quantity, category);
     }
 }

@@ -18,8 +18,8 @@ public class InventoryService {
         this.inventory = inventory;
     }
 
-    public void addItemToInventory (String name, BigDecimal price, Long quantity, Category category, Status status){
-        inventory.put(name, new Product(name, price, quantity, category, status));
+    public void addItemToInventory (String name, BigDecimal price, Long quantity, Category category){
+        inventory.put(name, new Product(name, price, quantity, category));
     }
 
     public List<Product> getInventory(){

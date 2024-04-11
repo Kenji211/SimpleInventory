@@ -6,6 +6,11 @@ public class Product {
 
     @Override
     public String toString() {
+        if (quantity>= 1) {
+            status = Status.valueOf("Available");
+        }else{
+            status = Status.valueOf("Unavailable");
+        }
         return "Product{" +
                 "name='" + name + '\'' +
                 ", price=" + price +
@@ -20,12 +25,11 @@ public class Product {
     private Category category;
     private Status status;
 
-    public Product(String name, BigDecimal price, Long quantity, Category category, Status status) {
+    public Product(String name, BigDecimal price, Long quantity, Category category) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.category = category;
-        this.status = status;
     }
 
 }
