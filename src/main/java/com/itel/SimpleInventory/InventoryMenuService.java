@@ -11,7 +11,7 @@ public class InventoryMenuService {
 
     private final InventoryService inventoryService;
     private final Scanner scanner;
-
+    
     @Autowired
     public InventoryMenuService(InventoryService inventoryService) {
         this.inventoryService = inventoryService;
@@ -19,6 +19,7 @@ public class InventoryMenuService {
     }
 
     public void displayMenu() {
+
         while (true) {
             System.out.println("\nInventory Management System");
             System.out.println("1. Add Item");
@@ -39,7 +40,12 @@ public class InventoryMenuService {
                 case 3:
                     System.out.print("Enter product name: ");
                     String productName = scanner.nextLine();
-                    inventoryService.getInventory();
+                    Product product = inventoryService.showDetails(productName);
+                    if (product != null){
+                        System.out.println(product);
+                    }else {
+                        System.out.println("Product does not exist.");
+                    }
                     break;
                 case 4:
                     System.out.print("Exiting program...");

@@ -26,4 +26,7 @@ public class InventoryService {
         return new ArrayList<>(inventory.values());
     }
 
+    public Product showDetails(String name){
+        return inventory.get(name);
+    }
 }
