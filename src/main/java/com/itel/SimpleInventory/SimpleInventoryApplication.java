@@ -11,5 +11,6 @@ public class SimpleInventoryApplication {
 		ConfigurableApplicationContext context = SpringApplication.run(SimpleInventoryApplication.class, args);
 		InventoryMenuService menuService = context.getBean(InventoryMenuService.class);
 		menuService.displayMenu();
+
 	}
 }

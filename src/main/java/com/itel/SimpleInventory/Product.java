@@ -31,4 +31,5 @@ public class Product {
         this.quantity = quantity;
         this.category = category;
     }
+
 }

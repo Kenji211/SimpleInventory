@@ -66,10 +66,21 @@ public class InventoryMenuService {
         System.out.print("Enter product quantity: ");
         long quantity = scanner.nextLong();
 
-        System.out.print("Enter product category: ");
-        Category category = Category.valueOf(scanner.next());
-
+        Category category;
+        do {
+            System.out.print("Enter product category: ");
+            String userInput = scanner.next();
+            try {
+                category = Category.valueOf(userInput);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid category. Try again");
+                continue;
+            }
+            break;
+        } while (true);
+        
 
         inventoryService.addItemToInventory(name, price, quantity, category);
     }
+
 }
