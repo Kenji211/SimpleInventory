@@ -19,39 +19,7 @@ public class InventoryMenuService {
         this.scanner = new Scanner(System.in);
     }
 
-    public void addItem() {
-        System.out.print("Enter product name: ");
-        String name = scanner.nextLine();
 
-        System.out.print("Enter product price: ");
-        BigDecimal price = scanner.nextBigDecimal();
-
-        System.out.print("Enter product quantity: ");
-        long quantity = scanner.nextLong();
-
-        Category category;
-        do {
-            System.out.print("Enter product category (");
-            for (Category category1 : Category.values()) {
-                if(category1 != Category.valueOf("TOYS")){
-                    System.out.print(category1 + ", ");
-                }else {
-                    System.out.print(category1);
-                }
-            }
-            System.out.print("): ");
-            String userInput = scanner.next().toUpperCase();
-            try {
-                category = Category.valueOf(userInput);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Invalid category. Try again");
-                continue;
-            }
-            break;
-        } while (true);
-
-        inventoryService.addItemToInventory(name, price, quantity, category);
-    }
     public void displayMenu() {
 
         while (true) {
@@ -90,5 +58,39 @@ public class InventoryMenuService {
                 scanner.nextLine();
             }
         }
+    }
+
+    private void addItem() {
+        System.out.print("Enter product name: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Enter product price: ");
+        BigDecimal price = scanner.nextBigDecimal();
+
+        System.out.print("Enter product quantity: ");
+        long quantity = scanner.nextLong();
+
+        Category category;
+        do {
+            System.out.print("Enter product category (");
+            for (Category category1 : Category.values()) {
+                if(category1 != Category.valueOf("TOYS")){
+                    System.out.print(category1 + ", ");
+                }else {
+                    System.out.print(category1);
+                }
+            }
+            System.out.print("): ");
+            String userInput = scanner.next().toUpperCase();
+            try {
+                category = Category.valueOf(userInput);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid category. Try again");
+                continue;
+            }
+            break;
+        } while (true);
+
+        inventoryService.addItemToInventory(name, price, quantity, category);
     }
 }
