@@ -18,6 +18,7 @@ public class InventoryService {
         this.inventory = inventory;
     }
 
+
     public void addItemToInventory (String name, BigDecimal price, Long quantity, Category category){
         inventory.put(name, new Product(name, price, quantity, category));
     }
@@ -29,4 +30,5 @@ public class InventoryService {
     public Product showDetails(String name){
         return inventory.get(name);
     }
+
 }

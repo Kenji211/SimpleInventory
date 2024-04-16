@@ -68,8 +68,16 @@ public class InventoryMenuService {
 
         Category category;
         do {
-            System.out.print("Enter product category: ");
-            String userInput = scanner.next();
+            System.out.print("Enter product category (");
+            for (Category category1 : Category.values()) {
+                if(category1 != Category.valueOf("TOYS")){
+                    System.out.print(category1 + ", ");
+                }else {
+                    System.out.print(category1);
+                }
+            }
+            System.out.print("): ");
+            String userInput = scanner.next().toUpperCase();
             try {
                 category = Category.valueOf(userInput);
             } catch (IllegalArgumentException e) {
@@ -78,9 +86,7 @@ public class InventoryMenuService {
             }
             break;
         } while (true);
-        
 
         inventoryService.addItemToInventory(name, price, quantity, category);
     }
-
 }
